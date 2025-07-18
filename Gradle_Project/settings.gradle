@@ -10,5 +10,17 @@ plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '0.10.0'
 }
 
+toolchainManagement {
+    jvm {
+        javaRepositories {
+            repository("foojay") {
+                resolverClass = org.gradle.jvm.toolchain.internal.FoojayToolchainResolver
+                setEnabled(false) // 禁用自动下载
+            }
+        }
+    }
+}
+
+
 rootProject.name = 'Gradle_Project'
 include('app')
